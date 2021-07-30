@@ -67,12 +67,12 @@ jobs:
           oci setup repair-file-permissions --file ~/.oci/key.pem
       - name: 'Get Instance IP'
         run: |
-          echo "::set-env name=INSTANCE_IP::$( \
+          echo "INSTANCE_IP=$( \
            oci compute instance list-vnics \
            --instance-id ${{env.INSTANCE_OCID}} \
            --query 'data [0]."public-ip"' \
            --raw-output \
-          )"
+          )" >> $GITHUB_ENV
       - name: 'Start App'
         uses: appleboy/ssh-action@master
         with:

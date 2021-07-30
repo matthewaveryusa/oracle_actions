@@ -59,14 +59,12 @@ jobs:
         run: |
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
           chmod +x install.sh
-          ./install.sh --accept-all-defaults
+          ./install.sh --accept-all-defaults --exec-dir /usr/local/bin
           exec -l $SHELL
-          which oci
       - name: 'Fix Config File Permissions'
         run: |
-          which oci
-          oci setup repair-file-permissions --file /home/runner/.oci/config
-          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
+          oci setup repair-file-permissions --file ~/.oci/config
+          oci setup repair-file-permissions --file ~/.oci/key.pem
       - name: 'Get Instance IP'
         run: |
           echo "::set-env name=INSTANCE_IP::$( \

@@ -69,7 +69,7 @@ jobs:
         run: |
           echo "INSTANCE_IP=$( \
            oci compute instance list-vnics \
-           --instance-id ${{env.INSTANCE_OCID}} \
+           --instance-id ${{secrets.INSTANCE_OCID}} \
            --query 'data [0]."public-ip"' \
            --raw-output \
           )" >> $GITHUB_ENV

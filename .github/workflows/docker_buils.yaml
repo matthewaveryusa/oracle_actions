@@ -74,7 +74,7 @@ jobs:
            --instance-id ${{env.INSTANCE_OCID}} \
            --query 'data [0]."public-ip"' \
            --raw-output \
-         )"
+          )"
       - name: 'Start App'
         uses: appleboy/ssh-action@master
         with:
